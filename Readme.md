@@ -1,4 +1,4 @@
-### `LEARN REACT (COURSER LINK " https://youtu.be/w7ejDZ8SWv8?list=RDCMUC29ju8bIPH5as8OGnQzwJyA ")` ###
+### `LEARN REACT (COURSE LINK " https://youtu.be/w7ejDZ8SWv8?list=RDCMUC29ju8bIPH5as8OGnQzwJyA ")` ###
 
 ## `React is a libary for building user interfaces` ##
 
