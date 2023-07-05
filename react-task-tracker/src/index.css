@@ -1,8 +1,21 @@
+:root{
+ --border: 1px solid steelblue;
+ --border-radius: 5px;
+
+--btn-transition: all 0.3s ease-in-out;
+
+ --btn-bg: black; 
+ --btn-bg-hover: white;
+
+ --btn-color: white;
+--btn-color-hover: black;
+
+ --btn-text: uppercase;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Raleway', 'Roboto mono';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +23,50 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* App.js css */
+
+.container{
+  /* position */
+max-width: 500px;
+min-height: 300px;
+margin: 30px auto;
+padding: 30px;
+border-radius: 5px;
+overflow: auto;
+/* style */
+border: var(--border);
+}
+
+
+/* header.js */
+.header{
+
+}
+
+.form-heading{
+  display: flex;
+  justify-content: space-between; 
+  border-bottom: var(--border);
+}
+
+/* add task */
+header.header button.btn{
+  /* position */
+  margin-top: 3.5vh;
+  height: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  transition: var(--btn-transition);
+  /* style */
+  background-color: var(--btn-bg) !important;
+  color: var(--btn-color);
+  text-transform: var(--btn-text);
+}
+header.header button.btn:hover{
+  background-color: var(--btn-bg-hover) !important;
+  color: var(--btn-color-hover) !important;
 }
