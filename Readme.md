@@ -89,3 +89,9 @@ ________________________________________________________________________________
 *   // if you have the " ES7 React/Redux/GraphQL/React-Native snippets " extension in vsc you can type `rafce` to get a template similar to (vue)Vueinti/!(html)
 *   // when doing this remember to remove import "React" since it is something that you already have installed
 *   // after creating component import it into `App.js` eg. `import Header from './components/header.js'`
+
+
+5. Once you complete the interface of your website you can proceed to build for production/database 
+* run `npm run build`           // doing this will create a build folder
+* run `npm i -g serve`
+* run `serve -s build -p 8000`  // this will stay live even if all folders are deleted...PRODUCTION BUILD.exe lol
