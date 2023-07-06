@@ -7,13 +7,18 @@ import Button from './Button';
 
 
 const header = ({title}) => {                                          // if you add props in App.js eg. <Header title="hello" /> you can call it inside the function brakets eg. (props) and then call it below in curly brackets eg. <p>{props.title}</p>
-  return (                          
+ const onClick = (e) => {
+    console.log('click')
+ }
+ 
+ 
+    return (                          
     // add inline styling eg. <p style={{color: 'red', backgroundColor: 'black'}}>{title}</p> the css attributes are slightly diffrent eg. background-color is backgroundColor in React
     // add outside styleing eg. <p style={headingStyle}>{title}</p>     
    <header className="header">
     <div className="form-heading">
         <h1>{title}</h1>
-        <Button />
+        <Button color='white' text='Add' bg='black' onClick={onClick}/>
     </div>
 
     </header>
@@ -25,6 +30,7 @@ const header = ({title}) => {                                          // if you
 // you can set a prop outside of the header variable and call the props object inside the header variable brackets eg. ({title}) and call the prop eg. <p>{title}</p>
 header.defaultProps = {
     title: 'Task Tracker',
+    number: 1,
 }
 
 // call propType to check the data in the variable matches the condition, string,number,...ect

@@ -1,16 +1,18 @@
 :root{
- --border: 1px solid steelblue;
- --border-radius: 5px;
+--border: 1px solid steelblue;
+--border-radius: 5px;
 
---btn-transition: all 0.3s ease-in-out;
+--transition: all 0.3s ease-in-out;
 
- --btn-bg: black; 
- --btn-bg-hover: white;
+--btn-bg: black; 
+--btn-bg-hover: white;
 
- --btn-color: white;
+--btn-color: white;
 --btn-color-hover: black;
 
- --btn-text: uppercase;
+--btn-text: uppercase;
+
+--task-text-padding: 8px;
 }
 
 body {
@@ -19,14 +21,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 /* App.js css */
-
 .container{
   /* position */
 max-width: 500px;
@@ -37,6 +37,7 @@ border-radius: 5px;
 overflow: auto;
 /* style */
 border: var(--border);
+background-color: #f6f7ff;
 }
 
 
@@ -55,12 +56,12 @@ border: var(--border);
 header.header button.btn{
   /* position */
   margin-top: 3.5vh;
-  height: 25px;
+  height: 30px;
   padding-left: 20px;
   padding-right: 20px;
   border: var(--border);
   border-radius: var(--border-radius);
-  transition: var(--btn-transition);
+  transition: var(--transition);
   /* style */
   background-color: var(--btn-bg) !important;
   color: var(--btn-color);
@@ -69,4 +70,52 @@ header.header button.btn{
 header.header button.btn:hover{
   background-color: var(--btn-bg-hover) !important;
   color: var(--btn-color-hover) !important;
+}
+
+
+
+/* Task.js */
+.task{
+  padding: 1px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  transition: var(--transition);
+  /* style */
+  background-color: rgba(133, 133, 133, 0.295);
+  border-radius: var(--border-radius);
+}
+.task h3, .task p{
+  padding-left: var(--task-text-padding);
+}
+.delete-btn{
+  padding-right: var(--task-text-padding);
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+.task h3, .task .delete-btn{
+  display: flex;
+  justify-content: space-between;
+}
+
+.task.reminder{
+  border-left: 5px solid steelblue;
+  transition: var(--transition);
+}
+
+.no-task-div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.no-tasks{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.no-task-div img{
+  height: 30vh;
+  border-radius: var(--border-radius);
 }
