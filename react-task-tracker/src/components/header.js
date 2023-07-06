@@ -6,11 +6,7 @@ import propTypes from 'prop-types';
 import Button from './Button';
 
 
-const header = ({title}) => {                                          // if you add props in App.js eg. <Header title="hello" /> you can call it inside the function brakets eg. (props) and then call it below in curly brackets eg. <p>{props.title}</p>
- const onClick = (e) => {
-    console.log('click')
- }
- 
+const header = ({title, onAdd, showAdd}) => {                                          // if you add props in App.js eg. <Header title="hello" /> you can call it inside the function brakets eg. (props) and then call it below in curly brackets eg. <p>{props.title}</p>
  
     return (                          
     // add inline styling eg. <p style={{color: 'red', backgroundColor: 'black'}}>{title}</p> the css attributes are slightly diffrent eg. background-color is backgroundColor in React
@@ -18,7 +14,7 @@ const header = ({title}) => {                                          // if you
    <header className="header">
     <div className="form-heading">
         <h1>{title}</h1>
-        <Button color='white' text='Add' bg='black' onClick={onClick}/>
+        <Button color='white' text={showAdd ? 'Close' : 'Add'} bg={showAdd ? 'red' : 'black'} onClick={onAdd}/>
     </div>
 
     </header>

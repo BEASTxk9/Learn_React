@@ -63,7 +63,7 @@ header.header button.btn{
   border-radius: var(--border-radius);
   transition: var(--transition);
   /* style */
-  background-color: var(--btn-bg) !important;
+  background-color: var(--btn-bg);
   color: var(--btn-color);
   text-transform: var(--btn-text);
 }
@@ -118,4 +118,55 @@ header.header button.btn:hover{
 .no-task-div img{
   height: 30vh;
   border-radius: var(--border-radius);
+}
+
+
+/* AddTask.js */
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: var(--border);
+}
+.form-control{
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+label{
+padding: auto;
+}
+input{
+  width: 100%;
+  padding: 5px;
+  border-radius: var(--border-radius);
+  border: var(--border);
+}
+
+.reminder-form-control{
+  display: flex I !important;
+  flex-direction: unset !important;
+}
+.reminder-input{
+  width: fit-content;
+  padding: 0px;
+}
+
+.SaveTask-btn{
+  width: 102%;
+  margin-top: 5px;
+  background-color: var(--btn-bg);
+  color: var(--btn-color);
+  transition: var(--transition);
+  border-radius: var(--border-radius);
+  border: var(--border);
+}
+
+.SaveTask-btn:hover{
+  background-color: var(--btn-bg-hover);
+  color: var(--btn-color-hover);
 }

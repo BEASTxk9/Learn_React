@@ -3,6 +3,7 @@ import {useState} from 'react';
 // import components
 import Header from './components/header';
 import Tasks from './components/Tasks';
+import AddTask from './components/AddTask';
 
 
 
@@ -11,25 +12,36 @@ const name = 'Shane';                                                // you can 
 const x = false;                                                     // call variable into an if statement eg. <h2>Hi {x ? 'Yes' : 'No'}</h2>
 
 const [tasks, setTasks] = useState([
-  {
-    id: 1,
-    text: 'Doctors Appointment',
-    day: 'Feb 5th at 2:20pm',
-    reminder: true
-  },
-  {
-    id: 2,
-    text: 'Meeting',
-    day: 'Feb 5th at 1:30pm',
-    reminder: true
-  },
-  {
-    id: 3,
-    text: 'Shopping',
-    day: 'Feb 5th at 2:30pm',
-    reminder: false
-  }
+  // {
+  //   id: 1,
+  //   text: 'Doctors Appointment',
+  //   day: 'Feb 5th at 2:20pm',
+  //   reminder: true
+  // },
+  // {
+  //   id: 2,
+  //   text: 'Meeting',
+  //   day: 'Feb 5th at 1:30pm',
+  //   reminder: true
+  // },
+  // {
+  //   id: 3,
+  //   text: 'Shopping',
+  //   day: 'Feb 5th at 2:30pm',
+  //   reminder: false
+  // }
 ]);
+
+// hide form
+const [showAddTask, setShowAddTask] = useState(false);
+
+
+// add task
+const addTask = (task) => {
+  const id = Math.floor(Math.random() * 10000) + 1;
+  const newTask = {id, ...task};
+  setTasks([...tasks, newTask])
+}
 
 // delete task
 const deleteTask = (id) => {
@@ -45,7 +57,13 @@ const toggleReminder = (id) => {
     <div className="container">
 
       {/* FUNCTION BASED COMPONENTS */}
-      <Header />
+      <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+
+{/* add task form */}
+{showAddTask && 
+      <AddTask onAdd={addTask} />
+}
+
 
 {/* if task is more than 0 show... :(else) show ... */}
       {tasks.length > 0  ?
