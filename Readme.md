@@ -95,3 +95,14 @@ ________________________________________________________________________________
 * run `npm run build`           // doing this will create a build folder
 * run `npm i -g serve`
 * run `serve -s build -p 8000`  // this will stay live even if all folders are deleted...PRODUCTION BUILD.exe lol
+
+
+6. Add JSON SERVER
+* run `npm i json-server`
+* after running the code above go to the `package.json` file and add `"server": "json-server --watch db.json --port 5000"` under eject
+* you can then run `npm run server` to display you website on the specified port ... in this example it will run on port 5000  // doing this will create a db.json file which is where all the data will be stored
+
+
+
+7. React does not have a router like vue so it will need to be installed as a package
+* run `npm i react-router-dom`/`npm install react-router-dom@latest`
