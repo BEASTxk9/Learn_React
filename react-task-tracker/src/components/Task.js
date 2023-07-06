@@ -1,3 +1,4 @@
+// run npm install react-icons  to install icons
 import { FaTimes } from 'react-icons/fa';
 
 const Task = ({task, onDelete, onToggle}) => {

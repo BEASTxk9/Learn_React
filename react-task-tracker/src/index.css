@@ -20,10 +20,16 @@ body {
   font-family: 'Raleway', 'Roboto mono';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://i.postimg.cc/fyhrkhvs/audience-1850119-1280.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+::-webkit-scrollbar{
+  display: none;
 }
 
 /* App.js css */
@@ -32,6 +38,7 @@ code {
 max-width: 500px;
 min-height: 300px;
 margin: 30px auto;
+margin-top: 20vh;
 padding: 30px;
 border-radius: 5px;
 overflow: auto;
@@ -72,8 +79,6 @@ header.header button.btn:hover{
   color: var(--btn-color-hover) !important;
 }
 
-
-
 /* Task.js */
 .task{
   padding: 1px;
@@ -103,21 +108,21 @@ header.header button.btn:hover{
 }
 
 .no-task-div{
+  min-height: 288px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   align-content: center;
+  background-image: url('https://i.postimg.cc/8kmGLL4d/43d68193783231-62642905a82e2.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-.no-tasks{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-}
-.no-task-div img{
-  height: 30vh;
-  border-radius: var(--border-radius);
+
+.no-task-div h3{
+  text-shadow: white 0px 0px 10px;
+  color: rgb(255, 255, 255);
+  mix-blend-mode: difference;
 }
 
 
@@ -128,8 +133,10 @@ form{
   justify-content: center;
   margin-top: 10px;
   margin-bottom: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   border-bottom: var(--border);
+  padding-left: var(--task-text-padding);
+  padding-right: var(--task-text-padding);
 }
 .form-control{
   display: flex;
@@ -169,4 +176,42 @@ input{
 .SaveTask-btn:hover{
   background-color: var(--btn-bg-hover);
   color: var(--btn-color-hover);
+}
+
+/* footer.js */
+footer{
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  border-top: var(--border);
+  margin-top: 1vh;
+}
+
+footer a{
+  color: black;
+  text-decoration: none;
+  transition: var(--transition);
+}
+footer a:hover{
+  color: red;
+  text-decoration: underline;
+}
+
+/* About.js */
+.About-sec{
+  min-height: 288px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-image: url('https://i.postimg.cc/8kmGLL4d/43d68193783231-62642905a82e2.gif');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.About-sec link, .About-sec h1, .About-sec p{
+  text-shadow: white 0px 0px 10px;
+  color: rgb(255, 255, 255);
+  mix-blend-mode: difference;
 }

@@ -1,9 +1,18 @@
 // import modules
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+
+// import router
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 // import components
 import Header from './components/header';
 import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
+import About from './components/About';
+import Footer from './components/Footer';
+
+
+
 
 
 
@@ -32,45 +41,121 @@ const [tasks, setTasks] = useState([
   // }
 ]);
 
+
+useEffect(() => {
+
+const getTasks = async () => {
+  const tasksFromServer = await fecthTasks();
+  setTasks(tasksFromServer);
+}
+  getTasks()
+
+}, [])  // [] sets default empty array
+
+
+// fetch tasks from db.json
+const fecthTasks = async (id) => {
+  const res = await fetch('http://localhost:5000/tasks');
+  const data = await res.json()
+
+return data;
+};
+
+// fetch task from db.json
+const fecthTask = async (id) => {
+  const res = await fetch(`http://localhost:5000/tasks/${id}`);
+  const data = await res.json()
+
+return data;
+};
+
+
+
 // hide form
 const [showAddTask, setShowAddTask] = useState(false);
 
-
 // add task
-const addTask = (task) => {
-  const id = Math.floor(Math.random() * 10000) + 1;
-  const newTask = {id, ...task};
-  setTasks([...tasks, newTask])
+const addTask = async (task) => {
+  const res = await fetch('http://localhost:5000/tasks', { 
+    method : 'POST',
+    headers : {
+      'Content-type' : 'application/json',
+    },
+    body: JSON.stringify(task)                              // sets task to json so it can be read by the db.json file
+   })
+
+   const data = await res.json()
+   setTasks([...tasks, data])                              // add task into the existing array
+
+
+  // const id = Math.floor(Math.random() * 10000) + 1;
+  // const newTask = {id, ...task};
+  // setTasks([...tasks, newTask])
 }
 
 // delete task
-const deleteTask = (id) => {
+const deleteTask = async (id) => {
+await fetch(`http://localhost:5000/tasks/${id}`, { method : 'DELETE' })
+
  setTasks(tasks.filter((task) => task.id != id))
 }
 
 // toggle reminder
-const toggleReminder = (id) => {
-  setTasks(tasks.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task))
+const toggleReminder = async (id) => {
+  const taskToToggle = await fecthTask(id);
+  const updTask = {...taskToToggle, reminder: !taskToToggle.reminder};
+
+  const res = await fetch(`http://localhost:5000/tasks/${id}`, { 
+    method: 'PUT',
+    headers : {
+      'Content-type' : 'application/json',
+    },
+    body: JSON.stringify(updTask)  
+   } )
+
+   const data = await res.json();
+
+  setTasks(tasks.map((task) =>
+   task.id === id ? {...task, reminder:
+   data.reminder} : task));
 }
+
 
   return (
-    <div className="container">
+    // to user router everything has to be wraped inside a router tag
+    <Router>
 
-      {/* FUNCTION BASED COMPONENTS */}
-      <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
+<div className="container">
 
-{/* add task form */}
-{showAddTask && 
-      <AddTask onAdd={addTask} />
-}
+{/* FUNCTION BASED COMPONENTS */}
+<Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} />
 
+  <Routes>
 
-{/* if task is more than 0 show... :(else) show ... */}
-      {tasks.length > 0  ?
-      <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} /> : <div className='no-task-div'><h3 className='no-tasks'>You Have No Tasks :)</h3><img src="https://i.postimg.cc/8kmGLL4d/43d68193783231-62642905a82e2.gif" alt=""></img></div>
-      }
+  <Route path="/" exact element={(
+  <>
+    {/* add task form */}
+    {showAddTask && <AddTask onAdd={addTask} />}
+    
+    {/* if task is more than 0 show... :(else) show ... */}
+    {tasks.length > 0 ? (
+      <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+    ) : (
+      <div className='no-task-div'>
+        <h3 className='no-tasks'>You Have No Tasks :)</h3>
+      </div>
+    )}
+  </>
+)}/>
 
-    </div>
+    <Route path="/about" element={<About />} />
+
+  </Routes>
+
+<Footer />
+</div>
+
+    </Router>
   );
 }
 
